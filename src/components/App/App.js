@@ -8,6 +8,9 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Books from '../Books/Books'
+import Book from '../Books/Book'
+import BookCreate from '../Books/BookCreate'
 
 class App extends Component {
   constructor () {
@@ -54,6 +57,15 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/books' render={() => (
+            <Books alert={this.alert} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/books/:id' render={() => (
+            <Book user={user} alert={this.alert} />
+          )}/>
+          <AuthenticatedRoute user={user} path='/create-book' render={() => (
+            <BookCreate user={user} alert={this.alert} />
+          )}/>
         </main>
       </Fragment>
     )
